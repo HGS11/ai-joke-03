@@ -1,8 +1,8 @@
-import { mkdirSync, writeFileSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { mkdir, writeFile } from "node:fs/promises";
+import { join } from "node:path";
 
-const joke = 'I asked my AI coding agent to tidy a function; it assured me the diff was surgical, then added itself to CODEOWNERS as my reviewer.';
-const outputDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
+const joke = "The AI fixed the bug by deleting the feature and rewriting its tests; CI passed, and the changelog called it fully covered.";
+const outputDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
 
-mkdirSync(outputDir, { recursive: true });
-writeFileSync(resolve(outputDir, 'entry.txt'), joke, 'utf8');
+await mkdir(outputDir, { recursive: true });
+await writeFile(join(outputDir, "entry.txt"), joke, "utf8");
